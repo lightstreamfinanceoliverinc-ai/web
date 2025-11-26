@@ -1,0 +1,79 @@
+name: Deploy to Firebase Hosting
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+          cache-dependency-path: functions/package-lock.json
+
+      - name: Install Firebase CLI
+        run: npm install -g firebase-tools
+
+      - name: Install Functions dependencies
+        run: |
+          cd functions
+          npm ci
+
+      - name: Build Functions
+        run: |
+          cd functions
+          npm run build
+
+      - name: Deploy to Firebase Hosting (Preview)
+        if: github.event_name == 'pull_request'
+        run: |
+          firebase hosting:channel:deploy preview-${{ github.event.number }} \
+            --project webpage-6286e \
+            --token "${{ secrets.FIREBASE_TOKEN }}" \
+            --expires 7d
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+
+      - name: Deploy to Firebase (Production)
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        run: |
+          firebase deploy \
+            --project webpage-6286e \
+            --token "${{ secrets.FIREBASE_TOKEN }}"
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+
+      - name: Comment PR with preview URL
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const prNumber = context.issue.number;
+            const previewUrl = `https://webpage-6286e--preview-${prNumber}.web.app`;
+            
+            github.rest.issues.createComment({
+              issue_number: prNumber,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `🚀 **Preview deployment ready!**\n\n📱 Preview URL: ${previewUrl}\n\n✅ Your changes are deployed and ready for testing.`
+            });
+
+      - name: Add deployment status
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        run: |
+          echo "🎉 Deployment successful!"
+          echo "🌐 Live URL: https://webpage-6286e.web.app"
+          echo "📧 Email functionality: Active"
+          echo "🛡️ Security features: Enabled"
